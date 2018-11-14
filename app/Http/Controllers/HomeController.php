@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Products;
+use App\Catergory;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -23,6 +25,13 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+
+        $products = Products::all()->where('status', '=', 'A');
+        //Pesquisando as categorias dos produtos
+        foreach ($products as $product) {
+            $product->category = $products->category();
+        }
+
+        return view('home', compact('products'));
     }
 }
