@@ -23,11 +23,12 @@
                         <tbody>
                             @foreach($products as $product)
                             <tr>
-                                <td>{{ $product->name }}</td>
-                                <td>{{ $product->category }}</td>
-                                <td>{{ $product->price }}</td>
-                                <td>
-                                    <a class="btn btn-warning" href="{{ route('edit',$product->id) }}"><i class="fa fa-pencil"></i> Edit</a>
+                                <td class="text-center">{{ $product->name }}</td>
+                                <td class="text-center">{{ $product->category->name }}</td>
+                                <td class="text-center">{{ $product->price }}</td>
+                                <td class="text-center">
+                                    <a class="btn btn-primary" href="{{ route('edit',$product->id) }}"><i class="fa fa-pencil"></i> EDIT </a>
+                                    <a class="btn btn-danger" href="{{ route('remove',$product->id) }}"><i class="fa fa-pencil"></i> DELETE </a>
                                 </tr>
                                 @endforeach
                             </tbody>
