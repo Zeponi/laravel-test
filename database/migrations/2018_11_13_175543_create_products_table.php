@@ -19,6 +19,8 @@ class CreateProductsTable extends Migration
             $table->string('description');
             $table->string('image');
             $table->decimal('price', 8, 2);
+            //A - Ativo E - Excluído
+            $table->enum('status', ['A', 'E'])->default('A');
             $table->timestamps();
         });
     }
