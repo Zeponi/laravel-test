@@ -47,6 +47,29 @@ class HomeController extends Controller
         return view('edit', compact('product', 'categorys'));
     }
 
+    public function update(Request $request, $id) {
+
+        $data = $request->all();
+
+        $product = Products::find($id);
+        $product->name = $data['name'];
+        $product->category_id = $data['category'];
+        $product->price = $data['price'];
+        $product->description = $data['description'];
+        $file = $request->file('imagem');
+        if($file){
+            $rand = rand(11111,99999);
+            $diretorio = "img/products/";
+            $ext = $file->guessClientExtension();
+            $nomeArquivo = "_img_".$rand.".".$ext;
+            $file->move($diretorio,$nomeArquivo);
+            $product->image = $diretorio.$nomeArquivo;
+        }
+        $product->update();
+
+        return redirect()->route('home');
+    }
+
     public function save(Request $request) {
         $data = $request->all();
 

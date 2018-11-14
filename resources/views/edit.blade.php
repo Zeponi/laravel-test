@@ -7,9 +7,9 @@
 				<div class="panel-heading">Dashboard</div>
 
 				<div class="panel-body">
-					<form method="put" action="{{ route('update', $product->id) }}" enctype="multipart/form-data">
+					<form method="post" action="{{ route('update', $product->id) }}" enctype="multipart/form-data">
 						{{ csrf_field() }}
-						<input type="hidden" name="put">
+						<input type="hidden"  name="_method" value="put">
 						<button class="btn btn-primary" type="submit"> UPDATE </button>
 						<a class="btn btn-default" href="{{ route('home') }}"><i class="fa fa-address-card"></i> CANCEL </a>
 						<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#{{ $product->id }}"> DELETE </button>
@@ -41,9 +41,8 @@
 							</div>
 							<div class="form-group">
 								<select class="form-control" name="category" required>
-									<option value="">Product sub name</option>
 									@foreach($categorys as $category)
-									<option value="{{ $category->id }}">{{ $category->name }}</option>
+										<option {{ $category->name == $product->category ? 'checked' : '' }} value="{{ $category->id }}">{{ $category->name }}</option>
 									@endforeach
 								</select>
 							</div>
@@ -56,7 +55,7 @@
 						</div>
 						<div class="col-md-6">
 							<div class="form-group">
-								<input type="file" name="imagem" class="form-control-file" required>
+								<input type="file" name="imagem" class="form-control-file">
 							</div>
 							<div class="form-group">
 								<img width="83px" src="{{ asset($product->image) }}">
