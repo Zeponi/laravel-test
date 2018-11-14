@@ -37,6 +37,16 @@ class HomeController extends Controller
         return view('add', compact('categorys'));
     }
 
+    public function edit($id) {
+        $categorys = Category::all();
+
+        $product = Products::find($id);
+        $category = Category::find($product->category_id);
+        $product->category = $category->name;
+
+        return view('edit', compact('product', 'categorys'));
+    }
+
     public function save(Request $request) {
         $data = $request->all();
 
@@ -48,7 +58,7 @@ class HomeController extends Controller
         $file = $request->file('imagem');
         if($file){
             $rand = rand(11111,99999);
-            $diretorio = "img/";
+            $diretorio = "img/products/";
             $ext = $file->guessClientExtension();
             $nomeArquivo = "_img_".$rand.".".$ext;
             $file->move($diretorio,$nomeArquivo);

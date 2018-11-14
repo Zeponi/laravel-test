@@ -33,7 +33,7 @@
 						</div>
 						<div class="col-md-6">
 							<div class="form-group">
-								<input type="file" name="imagem" multiple class="form-control-file" required>
+								<input type="file" name="imagem" class="form-control-file" required>
 							</div>
 						</div>
 					</form>
