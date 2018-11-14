@@ -22,6 +22,6 @@ Route::get('/add', 'HomeController@add')->name('add');
 Route::post('/save', 'HomeController@save')->name('save');
 Route::get('/edit/{id}', 'HomeController@edit')->name('edit');
 Route::put('/update/{id}', 'HomeController@update')->name('update');
-Route::get('/remove/{id}', 'HomeController@index')->name('remove');
+Route::get('/remove/{id}', 'HomeController@remove')->name('remove');
 
 Route::get('/import', 'HomeController@import')->name('import');
