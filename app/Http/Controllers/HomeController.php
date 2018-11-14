@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Products;
-use App\Catergory;
+use App\Category;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -27,11 +27,36 @@ class HomeController extends Controller
     {
 
         $products = Products::all()->where('status', '=', 'A');
-        //Pesquisando as categorias dos produtos
-        foreach ($products as $product) {
-            $product->category = $products->category();
-        }
 
         return view('home', compact('products'));
     }
+
+    public function add() {
+        $categorys = Category::all();
+
+        return view('add', compact('categorys'));
+    }
+
+    public function save(Request $request) {
+        $data = $request->all();
+
+        $product = new Products();
+        $product->name = $data['name'];
+        $product->category_id = $data['category'];
+        $product->price = $data['price'];
+        $product->description = $data['description'];
+        $file = $request->file('imagem');
+        if($file){
+            $rand = rand(11111,99999);
+            $diretorio = "img/";
+            $ext = $file->guessClientExtension();
+            $nomeArquivo = "_img_".$rand.".".$ext;
+            $file->move($diretorio,$nomeArquivo);
+            $product->image = $diretorio.$nomeArquivo;
+        }
+        $product->save();
+
+        return redirect()->route('home');
+    }
+
 }
