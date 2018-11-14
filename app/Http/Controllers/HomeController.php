@@ -59,4 +59,13 @@ class HomeController extends Controller
         return redirect()->route('home');
     }
 
+    public function remove($id) {
+
+        $product = Products::find($id);
+        $product->status = 'E';
+        $product->update();
+
+        return redirect()->route('home');
+    }
+
 }
