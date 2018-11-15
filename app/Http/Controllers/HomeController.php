@@ -101,4 +101,17 @@ class HomeController extends Controller
         return redirect()->route('home');
     }
 
+    public function import(Request $request) {
+
+        $file = $request->file('csv');
+        if ($file) {
+            $diretorio = "csv/";
+            $ext = $file->guessClientExtension();
+            $nomeArquivo = "_csv_".".".$ext;
+            $file->move($diretorio,$nomeArquivo);
+        }
+
+        return redirect()->route('home');
+    }
+
 }

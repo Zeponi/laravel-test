@@ -24,4 +24,4 @@ Route::get('/edit/{id}', 'HomeController@edit')->name('edit');
 Route::put('/update/{id}', 'HomeController@update')->name('update');
 Route::get('/remove/{id}', 'HomeController@remove')->name('remove');
 
-Route::get('/import', 'HomeController@import')->name('import');
+Route::post('/import', 'HomeController@import')->name('import');
