@@ -12,8 +12,9 @@ class SiteController extends Controller
 	public function index() {
 
 		$categorys = Category::all();
+		$products = Products::all()->where('status', '=', 'A');
 
-		return view('welcome', compact('categorys'));
+		return view('welcome', compact('categorys', 'products'));
 	}
 
 	public function product ($id) {
