@@ -13,7 +13,7 @@
 						<button class="btn btn-primary" type="submit"> UPDATE </button>
 						<a class="btn btn-default" href="{{ route('home') }}"><i class="fa fa-address-card"></i> CANCEL </a>
 						<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#{{ $product->id }}"> DELETE </button>
-						<a class="btn btn-primary" style="margin-left: 70px;" href="{{ route('site') }}"> PREVIEW </a>
+						<a class="btn btn-primary" style="margin-left: 70px;" href="{{ route('site.product', $product->id) }}"> PREVIEW </a>
 						<!-- Modal -->
 						<div class="modal fade" id="{{ $product->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 							<div class="modal-dialog" role="document">

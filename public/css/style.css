@@ -1,0 +1,22 @@
+.navbar-light .navbar-nav .nav-link {
+    color: black;
+}
+.bg-light {
+    background-color: #ffff !important;
+}
+.top-custom {
+	margin-top: 25px;
+    border-bottom: 1px solid #ccc;
+    box-shadow: 0 1px 3px 1px rgba(0, 0, 0, 0.5);
+}
+.button-custom {
+	background-color: black;
+    color: #fff;
+    border-radius: 0px;
+}
+.input-custom {
+	border: none;
+    border-bottom: 2px solid;
+    font-weight: 600;
+    width: 30%;
+}

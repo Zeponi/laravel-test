@@ -11,9 +11,8 @@
 |
 */
 
-Route::get('/', function () {
-	return view('welcome');
-})->name('site');
+Route::get('/', 'SiteController@index')->name('site');
+Route::get('/product/{id}', 'SiteController@product')->name('site.product');
 
 Auth::routes();
 
