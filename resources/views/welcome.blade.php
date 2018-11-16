@@ -20,38 +20,112 @@
     <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light top-custom">
         <div class="container">
             <a class="navbar-brand" href="{{ route('site') }}">Vintage</a>
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
 
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                  @foreach($categorys as $category)  
+                  <li class="nav-item active">
+                    <a class="nav-link" href="#">{{ $category->name }}</a>
+                </li>
+                @endforeach
+            </ul>
+        </div>
+        <div id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
-              @foreach($categorys as $category)  
               <li class="nav-item active">
-                <a class="nav-link" href="#">{{ $category->name }}</a>
+                <a class="nav-link" href="#"><i class="fas fa-shopping-cart"></i></a>
             </li>
-            @endforeach
+            <li class="nav-item">
+                <a style="font-weight: 700;" class="nav-link" href="{{ route('home') }}">ADMIN AREA</a>
+            </li>
         </ul>
     </div>
-    <div id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="#"><i class="fas fa-shopping-cart"></i></a>
-        </li>
-        <li class="nav-item">
-            <a style="font-weight: 700;" class="nav-link" href="{{ route('home') }}">ADMIN AREA</a>
-        </li>
-    </ul>
-</div>
 </div>
 </nav>
 
-<div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
-  <div class="carousel-inner">
-    <div class="carousel-item active">
-      <img class="d-block w-100" src=".../800x400?auto=yes&bg=777&fg=555&text=First slide" alt="First slide">
-  </div>
+<div class="container-fluid" style="color: white; margin-top: 83px; background-size: cover; background-repeat: no-repeat; background-image: url({{ asset('img/banner.jpg') }});">
+    <div style="padding: 10%;" class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1 style="font-size: 40px; font-weight: 400;">Vintage Watches</h1>
+                <p style="margin-bottom: auto; font-size: 20px;">A combination of beauty</p>
+                <p style="font-size: 20px;" >whith perfection.</p>
+            </div>
+        </div>
+    </div>    
 </div>
+
+<div class="container-fluid">
+    <div class="row text-center test">
+         <div class="col-md-12">
+             <h1>FEATURED</h1>
+             <h4>FOR MAN</h4>
+         </div>
+    </div>
+</div>
+
+<div class="container mb-3">
+    <div class="row mt-5">
+        @foreach($products as $product)
+        <div class="col-md-4 text-center">
+            <img style="width: 50%;" src="{{ asset($product->image) }}">
+            <div class="row mt-4">
+                <div class="col-md-6 text-left">
+                    <p style="margin-bottom: auto;">{{ $product->category->name }}</p>
+                    <h5>{{ $product->name }}</h5>       
+                </div>
+                <div class="col-md-6 text-right">
+                    <h2 style="font-weight: 700; padding-top: 10px;padding-bottom: 10px;">$ {{ $product->price }}</h2>
+                </div>
+            </div>
+            <div class="row text-center">
+                <a style="margin-left: 30%;" href="{{ route('site.product', $product->id) }}" class="btn btn-default btn-lg button-custom">ADD TO CART</a>
+            </div>
+        </div>
+        @endforeach
+    </div>
+</div>
+
+<div class="container-fluid">
+    <div class="row text-center test">
+         <div class="col-md-12">
+             <h1>FEATURED</h1>
+             <h4>FOR WOMAN</h4>
+         </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row mt-5">
+        @foreach($products as $product)
+        <div class="col-md-4 text-center">
+            <img style="width: 50%;" src="{{ asset($product->image) }}">
+            <div class="row mt-4">
+                <div class="col-md-6 text-left">
+                    <p style="margin-bottom: auto;">{{ $product->category->name }}</p>
+                    <h5>{{ $product->name }}</h5>       
+                </div>
+                <div class="col-md-6 text-right">
+                    <h2 style="font-weight: 700; padding-top: 10px;padding-bottom: 10px;">$ {{ $product->price }}</h2>
+                </div>
+            </div>
+            <div class="row text-center">
+                <a style="margin-left: 30%;" href="{{ route('site.product', $product->id) }}" class="btn btn-default btn-lg button-custom">ADD TO CART</a>
+            </div>
+        </div>
+        @endforeach
+    </div>
+    <div class="row">
+        <div class="col-md-12 text-center" style="margin-top: 10%;margin-bottom: 10%;">
+            <h1 style="font-size: 55px; margin-bottom: -15px;">WANT 80% OFF?</h1><br>
+            <h5>SUBSCRIBE BELOW TO GET</h5><br>
+            <input class="mb-5 input-custom" type="email" name="email" placeholder="Email"><br>
+            <button class="btn btn-default btn-lg button-custom">SUBSCRIBE</button>
+        </div>
+    </div>
 </div>
 
 <div class="container-fluid" style="background-color: black;color: white;">

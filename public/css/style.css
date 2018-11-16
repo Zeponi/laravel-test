@@ -20,3 +20,11 @@
     font-weight: 600;
     width: 30%;
 }
+a:hover {
+    color: white;
+}
+.test {
+    background: linear-gradient(10deg, white 50%, black 50%);
+    color: white;
+    height: 400px;
+}
